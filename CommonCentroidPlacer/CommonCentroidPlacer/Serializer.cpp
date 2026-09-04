@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <fstream>
 #include <iomanip>
 #include "Serializer.h" 
 
@@ -16,6 +17,14 @@ string Serializer::serializeCase(const TestCase& tc, const Grid& grid, const str
         return toJSON(tc, grid, includeDetails);
     }
     return "Invalid format";
+}
+void Serializer::outputToFile(const string& filename, const string& content) {
+	ofstream outFile(filename);
+	if (!outFile.is_open()) {
+		throw runtime_error("could not open file for writing: " + filename);
+	}
+	outFile << content;
+	outFile.close();
 }
 
 string Serializer::cellToDetailString(const Cell& cell) {
@@ -96,7 +105,8 @@ string Serializer::toJSON(const TestCase& tc, const Grid& grid, bool includeDeta
 
     for (int i = 0; i < grid.rows; ++i) {
         ss << "    [";
-        if (includeDetails) ss << "\n";
+        if (includeDetails) 
+            ss << "\n";
 
         for (int j = 0; j < grid.cols; ++j) {
             const auto& cell = grid.cells[i][j];
