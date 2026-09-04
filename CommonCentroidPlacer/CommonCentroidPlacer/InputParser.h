@@ -9,13 +9,11 @@ const string WHITESPACE = " \n\r\t\f\v";
 
 class InputParser {
 
-    static void ltrim(string& s);
-
-    static void rtrim(string& s);
-
     static void trim(string& s);
 
     static bool startsWith(const string& line, const string& prefix);
+
+	static string toLower(const string& s);
 
     static pair<string, string> splitHeader(const string& line);
 

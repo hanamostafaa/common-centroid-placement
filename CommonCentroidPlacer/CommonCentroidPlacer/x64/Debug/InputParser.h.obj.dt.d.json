@@ -1,10 +1,10 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\common centroid\\commoncentroidplacer\\commoncentroidplacer\\inputparser.h",
+        "Source": "d:\\common-centroid-placement\\commoncentroidplacer\\commoncentroidplacer\\inputparser.h",
         "ProvidedModule": "",
         "Includes": [
-            "d:\\common centroid\\commoncentroidplacer\\commoncentroidplacer\\models.h",
+            "d:\\common-centroid-placement\\commoncentroidplacer\\commoncentroidplacer\\models.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\string",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime.h",

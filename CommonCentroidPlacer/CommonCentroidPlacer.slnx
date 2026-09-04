@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CommonCentroidPlacer/CommonCentroidPlacer.vcxproj" />
+  <Project Path="CommonCentroidPlacer/CommonCentroidPlacer.vcxproj" Id="c9494e4d-9d82-4c06-b96d-2aab9f4fbf1b" />
 </Solution>

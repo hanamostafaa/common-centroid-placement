@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\common centroid\CommonCentroidPlacer\x64\Debug\CommonCentroidPlacer.exe</FullPath>
+      <FullPath>D:\common-centroid-placement\CommonCentroidPlacer\x64\Debug\CommonCentroidPlacer.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -8,26 +8,14 @@
 
 using namespace std;
 
-void InputParser::ltrim(string& s) {
-    size_t start = s.find_first_not_of(WHITESPACE);
-    if (start != string::npos) {
-        s.erase(0, start);
-    }
-    else {
-        s.clear();
-    }
-}
-
-void InputParser::rtrim(string& s) {
-    size_t end = s.find_last_not_of(WHITESPACE);
-    if (end != string::npos) {
-        s.erase(end + 1);
-    }
-}
-
 void InputParser::trim(string& s) {
-    rtrim(s);
-    ltrim(s);
+    auto start = s.find_first_not_of(WHITESPACE);
+	if (start == string::npos) { // all whitespace
+        s.clear();
+        return;
+    }
+    auto end = s.find_last_not_of(WHITESPACE);
+    s = s.substr(start, end - start + 1);
 }
 
 bool InputParser::startsWith(const string& line, const string& prefix) {
@@ -60,15 +48,19 @@ vector<string> InputParser::splitCsv(const string& line) {
     }
     return fields;
 }
-
+string InputParser::toLower(const string& s) {
+	string lower;
+	for (char c : s) lower += tolower(c);
+	return lower;
+}
 bool InputParser::parseBool(const string& s) {
-    if (s == "true" || s == "1" || s == "True" || s == "TRUE") return true;
-    if (s == "false" || s == "0" || s == "False" || s == "FALSE") return false;
-    throw runtime_error("Invalid boolean value: " + s);
+	string lower = toLower(s);
+    if (lower == "true" || lower == "1") return true;
+    if (lower == "false" || lower == "0") return false;
+    throw runtime_error("Invalid boolean value for include details: " + s);
 }
 string InputParser::parseOutput(const string& s) {
-    string lower;
-    for (char c : s) lower += tolower(c);
+    string lower = toLower(s);
     if (lower == "csv" || lower == "json" || lower == "xml") return lower;
     throw runtime_error("Invalid output format: " + s);
 }
@@ -77,12 +69,20 @@ Device InputParser::parseDeviceRow(const vector<string>& f) {
     if (f.size() != 7)
         throw runtime_error("Device row must have 7 fields, got: " + to_string(f.size()));
     Device d;
+	if (f[0].size() != 1)
+		throw runtime_error("Device symbol must be a single character, got: " + f[0]);
     d.symbol = f[0][0];
     d.name = f[1];
     d.type = f[2];
     d.count = stoi(f[3]);
+	if (d.count < 0)
+		throw runtime_error("Device count cannot be negative: " + to_string(d.count));
     d.width = stod(f[4]);
+	if (d.width < 0.0)
+		throw runtime_error("Device width cannot be negative: " + to_string(d.width));
     d.length = stod(f[5]);
+	if (d.length < 0.0)
+		throw runtime_error("Device length cannot be negative: " + to_string(d.length));
     d.fingers = stoi(f[6]);
     return d;
 }
@@ -91,7 +91,10 @@ Dummy InputParser::parseDummyRow(const vector<string>& f) {
     if (f.size() != 3)
         throw runtime_error("Dummy row must have 3 fields, got: " + to_string(f.size()));
     Dummy d;
+	if (f[0].size() != 1)
+		throw runtime_error("Dummy symbol must be a single character, got: " + f[0]);
     d.symbol = f[0][0];
+
     d.name = f[1];
     d.dummyType = f[2];
     return d;
@@ -100,7 +103,7 @@ Dummy InputParser::parseDummyRow(const vector<string>& f) {
 vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDetails, string& outputFormat) {
     ifstream file(filepath);
     if (!file.is_open())
-        throw runtime_error("Could not open input file: " + filepath);
+        throw runtime_error("could not open input file: " + filepath);
 
     vector<TestCase> cases;
     TestCase current{};
@@ -136,6 +139,8 @@ vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDe
                 if (!haveOpenCase)
                     throw runtime_error("#ROWS before #CASE at line (no open case) " + to_string(lineNumber));
                 current.rows = stoi(value);
+				if (current.rows <= 0)
+					throw runtime_error("Number of rows must be positive, got " + to_string(current.rows));
             }
             else if (key == "DEVICES") {
                 mode = Mode::Devices;
@@ -143,7 +148,7 @@ vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDe
             else if (key == "DUMMIES") {
                 mode = Mode::Dummies;
             }
-            continue;
+            continue; // comments are ignored
         }
 
         if (!haveOpenCase)

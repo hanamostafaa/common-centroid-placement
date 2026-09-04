@@ -1,0 +1,104 @@
+#OUTPUT_FORMAT=CSV
+#INCLUDE_DETAILS=false
+
+#CASE=1
+#ROWS=2
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Inv_Main, NMOS, 2, 1.5, 0.18, 1
+#DUMMIES
+#symbol, name, dummyType
+*, D1, Filler
+
+#CASE=2
+#ROWS=4
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Diff_L, PMOS, 4, 3.0, 0.25, 2
+B, Diff_R, PMOS, 4, 3.0, 0.25, 2
+C, Bias_1, PMOS, 2, 1.2, 0.25, 1
+#DUMMIES
+#symbol, name, dummyType
+*, TieOff, Boundary
+
+#CASE=3
+#ROWS=1
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Single_Pair, NMOS, 2, 2.0, 0.18, 1
+#DUMMIES
+#symbol, name, dummyType
+*, Cap_Guard, GuardRing
+
+#CASE=4
+#ROWS=3
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Cent_Dev, RES, 2, 5.0, 2.0, 1
+B, Mid_Dev, RES, 4, 5.0, 2.0, 1
+#DUMMIES
+#symbol, name, dummyType
+*, Fill_Sub, Substrate
+
+#CASE=5
+#ROWS=4
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Core_Cell, PMOS, 10, 1.0, 0.18, 1
+#DUMMIES
+#symbol, name, dummyType
+*, Tap_Cell, WellTap
+
+#CASE=6
+#ROWS=2
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, LSB_Sw, NMOS, 2, 0.5, 0.18, 1
+B, MSB_Sw, NMOS, 4, 2.0, 0.18, 4
+C, Ref_Gen, RES, 6, 10.0, 1.0, 2
+#DUMMIES
+#symbol, name, dummyType
+*, Iso_Ring, Isolation
+
+#CASE=7
+#ROWS=5
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Diff_InP, PMOS, 4, 4.0, 0.35, 2
+B, Diff_InN, PMOS, 4, 4.0, 0.35, 2
+C, Cascode, PMOS, 8, 2.0, 0.35, 1
+#DUMMIES
+#symbol, name, dummyType
+*, Dummy_Edge, Boundary
+
+#CASE=8
+#ROWS=4
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Small_A, NMOS, 2, 0.8, 0.18, 1
+B, Large_B, NMOS, 8, 15.0, 0.5, 8
+#DUMMIES
+#symbol, name, dummyType
+*, Edge_Fill, GuardRing
+
+#CASE=9
+#ROWS=6
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Quad_A, PMOS, 4, 2.5, 0.18, 2
+B, Quad_B, PMOS, 4, 2.5, 0.18, 2
+C, Quad_C, PMOS, 4, 2.5, 0.18, 2
+D, Quad_D, PMOS, 4, 2.5, 0.18, 2
+#DUMMIES
+#symbol, name, dummyType
+*, Tap_Edge, Substrate
+
+#CASE=10
+#ROWS=4
+#DEVICES
+#symbol, name, type, count, width, length, fingers
+A, Center_Core, NMOS, 2, 1.0, 0.18, 1
+B, Outer_Shell, NMOS, 14, 1.0, 0.18, 1
+#DUMMIES
+#symbol, name, dummyType
+*, Guard_Band, Isolation

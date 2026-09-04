@@ -1,3 +1,5 @@
-﻿  Placer.cpp
-D:\common centroid\CommonCentroidPlacer\CommonCentroidPlacer\Placer.cpp(30,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  CommonCentroidPlacer.vcxproj -> D:\common centroid\CommonCentroidPlacer\x64\Debug\CommonCentroidPlacer.exe
+﻿  CommonCentroidPlacer.cpp
+D:\common-centroid-placement\CommonCentroidPlacer\CommonCentroidPlacer\CommonCentroidPlacer.cpp(7,14): warning C4101: 'parser': unreferenced local variable
+  InputParser.cpp
+  Generating Code...
+  CommonCentroidPlacer.vcxproj -> D:\common-centroid-placement\CommonCentroidPlacer\x64\Debug\CommonCentroidPlacer.exe

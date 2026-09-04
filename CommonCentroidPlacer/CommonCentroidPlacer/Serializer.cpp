@@ -72,9 +72,9 @@ string Serializer::toXML(const TestCase& tc, const Grid& grid, bool includeDetai
             for (int j = 0; j < grid.cols; ++j) {
                 const auto& cell = grid.cells[i][j];
                 if (!cell.isDummy)
-                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.device->name << "\" type=\"" << cell.device->type << "\" width=\"" << cell.device->width << "\" length=\"" << cell.device->length << "\" fingers=\"" << cell.device->fingers << "\" />";
+                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.device->name << "\" type=\"" << cell.device->type << "\" width=\"" << cell.device->width << "\" length=\"" << cell.device->length << "\" fingers=\"" << cell.device->fingers << "\" />" << endl;
                 else
-                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.dummyRef->name << "\" dummyType=\"" << cell.dummyRef->dummyType << "\" />";
+                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.dummyRef->name << "\" dummyType=\"" << cell.dummyRef->dummyType << "\" />" << endl;
             }
             ss << "    ";
         }

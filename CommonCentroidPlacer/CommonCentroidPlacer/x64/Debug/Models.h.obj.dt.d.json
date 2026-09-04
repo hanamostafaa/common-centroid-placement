@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\common centroid\\commoncentroidplacer\\commoncentroidplacer\\models.h",
+        "Source": "d:\\common-centroid-placement\\commoncentroidplacer\\commoncentroidplacer\\models.h",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\string",

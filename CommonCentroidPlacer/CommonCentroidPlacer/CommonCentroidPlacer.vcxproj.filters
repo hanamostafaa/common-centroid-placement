@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Test Cases">
+      <UniqueIdentifier>{66bae6ba-9b72-4c3b-85f2-83dccc7d47a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommonCentroidPlacer.cpp">
@@ -43,6 +46,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input.txt" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input1.txt">
+      <Filter>Test Cases</Filter>
+    </Text>
+    <Text Include="input2.txt">
+      <Filter>Test Cases</Filter>
+    </Text>
+    <Text Include="input3.txt">
+      <Filter>Test Cases</Filter>
+    </Text>
   </ItemGroup>
 </Project>
