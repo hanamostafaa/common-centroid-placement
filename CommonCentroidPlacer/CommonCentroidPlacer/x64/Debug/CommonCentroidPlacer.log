@@ -1,0 +1,3 @@
+﻿  Placer.cpp
+D:\common centroid\CommonCentroidPlacer\CommonCentroidPlacer\Placer.cpp(30,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  CommonCentroidPlacer.vcxproj -> D:\common centroid\CommonCentroidPlacer\x64\Debug\CommonCentroidPlacer.exe

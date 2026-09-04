@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Serializer.obj",
+            "outputs": [
+                "x64\\Debug\\Serializer.cpp.obj.dt.module.json",
+                "x64\\Debug\\Serializer.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

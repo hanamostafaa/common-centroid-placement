@@ -1,0 +1,11 @@
+#OUTPUT_FORMAT=XML
+#INCLUDE_DETAILS=false
+#CASE=1
+#ROWS=2
+#DEVICES
+#symbol,name,type,count,width,length,fingers
+A,DiffPair_Left,NMOS,3,2.0,1.0,1
+B,DiffPair_Right,NMOS,3,2.0,1.0,1
+#DUMMIES
+#symbol,name,dummyType
+*,Edge_Dummy,BoundaryDummy
