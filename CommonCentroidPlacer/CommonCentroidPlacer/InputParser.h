@@ -27,6 +27,8 @@ class InputParser {
 
     static Dummy parseDummyRow(const vector<string>& f);
 
+	static void validateTestCase(const TestCase& tc);
+
     public:
 
     static vector<TestCase> parseInput(const string& filepath, bool& includeDetails, string& outputFormat);

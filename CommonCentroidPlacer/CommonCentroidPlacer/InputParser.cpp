@@ -1,4 +1,3 @@
-# pragma once
 #include "InputParser.h"
 #include <fstream>
 #include <sstream>
@@ -99,7 +98,12 @@ Dummy InputParser::parseDummyRow(const vector<string>& f) {
     d.dummyType = f[2];
     return d;
 }
-
+void InputParser::validateTestCase(const TestCase& tc) {
+	if (tc.rows == 0 && tc.devices.size() > 0)
+		throw runtime_error("Test case " + to_string(tc.caseNumber) + " has zero rows but has devices");
+	if (tc.devices.empty())
+		throw runtime_error("Test case " + to_string(tc.caseNumber) + " has no devices defined");
+}
 vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDetails, string& outputFormat) {
     ifstream file(filepath);
     if (!file.is_open())
@@ -129,7 +133,10 @@ vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDe
             }
             else if (key == "CASE") {
                 if (haveOpenCase)
+                {
+                    InputParser::validateTestCase(current);
                     cases.push_back(current);
+                }
                 current = TestCase{};
                 current.caseNumber = stoi(value);
                 haveOpenCase = true;
@@ -139,8 +146,8 @@ vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDe
                 if (!haveOpenCase)
                     throw runtime_error("#ROWS before #CASE at line (no open case) " + to_string(lineNumber));
                 current.rows = stoi(value);
-				if (current.rows <= 0)
-					throw runtime_error("Number of rows must be positive, got " + to_string(current.rows));
+				if (current.rows < 0)
+					throw runtime_error("Number of rows cannot be negative: " + to_string(current.rows));
             }
             else if (key == "DEVICES") {
                 mode = Mode::Devices;
@@ -167,6 +174,10 @@ vector<TestCase> InputParser::parseInput(const string& filepath, bool& includeDe
         }
     }
 
-    if (haveOpenCase) cases.push_back(current);
+    if (haveOpenCase)
+    {
+		InputParser::validateTestCase(current);
+        cases.push_back(current);
+    }
     return cases;
 }

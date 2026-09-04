@@ -1,4 +1,3 @@
-#pragma once
 #include <string>
 #include <vector>
 #include <sstream>
@@ -36,7 +35,8 @@ string Serializer::cellToDetailString(const Cell& cell) {
     }
     else {
 
-        ss << cell.symbol << ";" << cell.device->name << ";" << cell.device->type << ";" << cell.device->width << ";" << cell.device->length << ";" << cell.device->fingers;
+        ss << cell.symbol << ";" << cell.device->name << ";" << cell.device->type << ";" 
+            <<fixed<<setprecision(1)<< cell.device->width << ";" << cell.device->length << ";" << cell.device->fingers;
     }
     return ss.str();
 }
@@ -81,7 +81,8 @@ string Serializer::toXML(const TestCase& tc, const Grid& grid, bool includeDetai
             for (int j = 0; j < grid.cols; ++j) {
                 const auto& cell = grid.cells[i][j];
                 if (!cell.isDummy)
-                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.device->name << "\" type=\"" << cell.device->type << "\" width=\"" << cell.device->width << "\" length=\"" << cell.device->length << "\" fingers=\"" << cell.device->fingers << "\" />" << endl;
+                    ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.device->name << "\" type=\"" << cell.device->type 
+                    << fixed << setprecision(1) << "\" width=\"" << cell.device->width << "\" length=\"" << cell.device->length << "\" fingers=\"" << cell.device->fingers << "\" />" << endl;
                 else
                     ss << "      <Cell symbol=\"" << cell.symbol << "\" name=\"" << cell.dummyRef->name << "\" dummyType=\"" << cell.dummyRef->dummyType << "\" />" << endl;
             }

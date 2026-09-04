@@ -1,4 +1,3 @@
-#pragma once
 #include "Placer.h"
 #include<algorithm>
 #include<memory>
@@ -54,12 +53,10 @@ Grid Placer::buildPlacement(const TestCase& tc) {
 	}
 	// sort devices by symbol
 	vector<const Device*> devices;
-	for (const auto& dev : tc.devices) {
+	for (const auto& dev : tc.devices)
 		devices.push_back(&dev);
-	}
-	sort(devices.begin(), devices.end(), [](const Device* a, const Device* b) {
-		return a->symbol < b->symbol;
-		});
+
+	sort(devices.begin(), devices.end(), [](const Device* a, const Device* b) { return a->symbol < b->symbol; });
 	int remaining = 0;
 
 	for (const Device* d : devices) {
